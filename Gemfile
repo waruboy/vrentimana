@@ -33,8 +33,17 @@ gem 'passenger'
 # Use unicorn as the app server
 # gem 'unicorn'
 
-# Use Capistrano for deployment
-gem 'capistrano-rails', group: :development
+
+group :test do
+  gem 'minitest'
+  gem 'selenium-webdriver', '2.35.1'
+  gem 'capybara', '2.1.0'
+end
+
+group :development do
+  gem 'capistrano-rails'
+  gem 'rspec-rails', '2.13.1'
+end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
