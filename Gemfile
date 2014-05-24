@@ -48,7 +48,11 @@ end
 group :development do
   gem 'capistrano-rails'
   gem 'rspec-rails', '2.13.1'
+
 end
+
+gem 'devise'
+gem 'rails_admin'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
