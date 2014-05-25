@@ -9,8 +9,8 @@ class StaticPagesController < ApplicationController
     @lat = @location["geometry"]["location"]["lat"]
     @lng = @location["geometry"]["location"]["lng"]
 
-
-    @stops = TjStop.near([@lat, @lng], 1, units: :km)
+    coordinate = [@lat, @lng]
+    @stops = TjStop.near(coordinate, 1, units: :km)
 
   end
 end
