@@ -1,10 +1,16 @@
 <h2> Halte terdekat dari: <%= @query %></h2>
-<p><%= @location["formatted_address"] %></p>
-<p><%= "(#{@lat}, #{@lng})" %></p>
 
-<% @stops.each do |stop| %>
+<% if @success %>
+  <p><%= @location["formatted_address"] %></p>
+  <p><%= "(#{@lat}, #{@lng})" %></p>
 
-  <%= "#{stop.name}: #{stop.distance} km" %>
-  <br>
+  <% @stops.each do |stop| %>
+
+    <%= "#{stop.name}: #{stop.distance} km" %>
+    <br>
+
+  <% end %>
+<% else %>
+  <p> Tidak ditemukan halte di sekitar Pasar Festival </p>
 
 <% end %>
