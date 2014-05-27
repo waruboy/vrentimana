@@ -23,7 +23,7 @@ class StaticPagesController < ApplicationController
       end
 
       location_hash = {
-        lat: @lat, lng: @lng, infowindow: @query,
+        lat: @lat, lng: @lng, infowindow: @location["formatted_address"],
         picture: {
           url: "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=X|0000FF|FFFFFF", # up to you to pass the proper parameters in the url, I guess with a method from device
           width: 32,
