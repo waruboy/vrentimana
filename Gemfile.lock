@@ -69,6 +69,7 @@ GEM
     font-awesome-rails (4.1.0.0)
       railties (>= 3.2, < 5.0)
     geocoder (1.2.1)
+    gmaps4rails (2.1.2)
     haml (4.0.5)
       tilt
     hike (1.2.3)
@@ -216,6 +217,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
   geocoder
+  gmaps4rails
   jbuilder (~> 2.0)
   jquery-rails
   minitest

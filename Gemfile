@@ -53,6 +53,7 @@ end
 
 gem 'devise'
 gem 'rails_admin'
+gem 'gmaps4rails'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]

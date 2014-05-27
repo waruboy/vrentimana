@@ -5,8 +5,9 @@ class StaticPagesController < ApplicationController
 
   def search
    @query = params[:q]
-    result = Geocoder.search(@query)
-    @succes = !result.empty?
+    @query_string = "#{@query}"
+    result = Geocoder.search(@query_string, bounds: [[-6.0886599, 106.972825], [-6.3708331, 106.686211]])
+    @success = !result.empty?
     if @success
       @location = result.first.data
       @lat = @location["geometry"]["location"]["lat"]
@@ -14,6 +15,23 @@ class StaticPagesController < ApplicationController
 
       coordinate = [@lat, @lng]
       @stops = TjStop.near(coordinate, 1, units: :km)
+
+      @hash = Gmaps4rails.build_markers(@stops) do |stop, marker|
+        marker.lat stop.latitude
+        marker.lng stop.longitude
+        marker.infowindow stop.name
+      end
+
+      location_hash = {
+        lat: @lat, lng: @lng, infowindow: @query,
+        picture: {
+          url: "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=X|0000FF|FFFFFF", # up to you to pass the proper parameters in the url, I guess with a method from device
+          width: 32,
+          height: 32
+        }
+      }
+
+      @hash << location_hash
     end
 
   end
