@@ -2,10 +2,10 @@
 
 <div class="row">
   <div class="col-lg-12">
-    <%= form_tag("/search?q=Monumen Nasional", method: "get") do %>
-      <%= label_tag(:q, "Search for:") %>
+    <%= form_tag("/search", method: "get") do %>
+      <%= label_tag(:q, "Halte terdekat dari:") %>
       <%= text_field_tag(:q) %>
-      <%= submit_tag("Search") %>
+      <%= submit_tag("Cari") %>
     <% end %>
   </div>
 </div>
