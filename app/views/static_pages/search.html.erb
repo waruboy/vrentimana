@@ -1,4 +1,4 @@
-<h2> Halte terdekat dari: <%= @query %></h2>
+<h2> Pencarian: <%= @query %></h2>
 <% if @success %>
   <p><%= @location["formatted_address"] %></p>
   <p><%= "(#{@lat}, #{@lng})" %></p>
@@ -8,9 +8,11 @@
 
   <br>
 
-  <div class="alert alert-warning">
-    <%= "Tidak ada halte di sekitar lokasi" if @stops.empty? %>
-  </div>
+  <% if @stops.empty? %>
+    <div class="alert alert-warning">
+      <p>Tidak ada halte di sekitar lokasi</p>
+    </div>
+  <% end %>
 
   <% @stops.each do |stop| %>
 
