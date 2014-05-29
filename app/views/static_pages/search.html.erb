@@ -1,3 +1,4 @@
+
 <h2> Pencarian: <%= @query %></h2>
 <div class="col-md-6">
   <% if @success %>
@@ -12,7 +13,7 @@
     <div class="panel panel-default">
       
       <div class="panel-heading">
-        <h3 class="panel-title">Halte Transjakarta terdekat: </h3>
+        <h3 class="panel-title">Halte Transjakarta terdekat <span class="badge pull-right"><%= @stops.count(:all) %></span> </h3>
       </div>
       <div class="panel-body">  
         <% if @stops.empty? %>
@@ -24,7 +25,7 @@
 
         <% @stops.each do |stop| %>
 
-          <%= "#{stop.name}: #{stop.distance.round(1)} km" %>
+          <%= "#{stop.name} (#{stop.distance.round(1)} km)" %>
           <br>
 
         <% end %>
