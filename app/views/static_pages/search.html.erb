@@ -6,9 +6,15 @@
     <div id="map" style='width: 800px; height: 400px;'></div>
   </div>
 
+  <br>
+
+  <div class="alert alert-warning">
+    <%= "Tidak ada halte di sekitar lokasi" if @stops.empty? %>
+  </div>
+
   <% @stops.each do |stop| %>
 
-    <%= "#{stop.name}: #{stop.distance} km" %>
+    <%= "#{stop.name}: #{stop.distance.round(1)} km" %>
     <br>
 
   <% end %>
@@ -25,6 +31,8 @@
   });
   </script>
 <% else %>
-  <p> Lokasi <%= @query %> tidak ditemukan di Jakarta</p>
+  <div class="alert alert-warning">
+    <p> Lokasi <%= @query %> tidak ditemukan di Jakarta</p>
+  </div>
 
 <% end %>
