@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140521231118) do
+ActiveRecord::Schema.define(version: 20140601014016) do
+
+  create_table "corridors", force: true do |t|
+    t.integer  "number"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "corridors", ["number"], name: "index_corridors_on_number"
 
   create_table "tj_stops", force: true do |t|
     t.string   "name"
