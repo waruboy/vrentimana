@@ -1,6 +1,7 @@
 class TjStop < ActiveRecord::Base
   validates :google_lookup, presence: true
   validates :name, presence: true
+  validates :corridor, presence: true
 
   belongs_to :corridor
   
