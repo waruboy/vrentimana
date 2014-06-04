@@ -12,35 +12,14 @@
 
     <br>
 
-    <div class="panel panel-default">
-      
-      <div class="panel-heading">
-        <h3 class="panel-title">Halte TransJakarta <span class="badge pull-right"><%= @stops.count(:all) %></span> </h3>
-      </div>
-      <div class="panel-body">  
-        <% if @stops.empty? %>
-          <div class="alert alert-warning">
-            <p>Tidak ada halte di sekitar lokasi</p>
-          </div>
-        <% end %>
 
+    <%= render 'tj_stop_panel' %>
+    <%= render 'map_script' %>
 
-        <% @stops.each do |stop| %>
-
-          <%= "#{stop.name} (#{stop.distance.round(1)} km)" %>
-          <br>
-
-        <% end %>
-
-        <%= render 'map_script' %>
-
-      <% else %>
-        <div class="alert alert-warning">
-          <p> Lokasi "<%= @query %>" tidak ditemukan di Jakarta</p>
-        </div>
-      </div>
+  <% else %>
+    <div class="alert alert-warning">
+      <p> Lokasi "<%= @query %>" tidak ditemukan di Jakarta</p>
     </div>
-
-    <% end %>
+<% end %>
 
 </div>
