@@ -1,19 +1,19 @@
 <%= render 'search_box' %>
-<%= @success %>
 
 <h2> Pencarian: <%= @query %></h2>
-<div class="col-md-6">
+
   <% if @success %>
     <p><%= @location["formatted_address"] %></p>
     <p><%= "(#{@lat}, #{@lng})" %></p>
-    <div style='width: 800px;'>
-      <div id="map" style='width: 400px; height: 400px;'></div>
+    <div class="row">
+      <div class="col-md-6">
+        <div id="map" style='width: 400px; height: 400px;'></div>
+        <br>
+      </div>
+      <div class="col-md-4">
+        <%= render 'tj_stop_panel' %>
+      </div>
     </div>
-
-    <br>
-
-
-    <%= render 'tj_stop_panel' %>
     <%= render 'map_script' %>
 
   <% else %>
