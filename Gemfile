@@ -49,6 +49,7 @@ end
 
 group :development do
   gem 'capistrano-rails'
+  gem 'spring-commands-rspec'
   gem 'rspec-rails', '2.13.1'
 
 
