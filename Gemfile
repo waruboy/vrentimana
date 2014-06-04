@@ -43,7 +43,7 @@ group :test do
   gem 'minitest'
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara', '2.1.0'
-  gem 'shoulda'
+  gem 'shoulda', require: false
   gem 'factory_girl_rails'
 end
 
