@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140601014016) do
+ActiveRecord::Schema.define(version: 20140603225327) do
 
   create_table "corridors", force: true do |t|
     t.integer  "number"
@@ -29,8 +29,10 @@ ActiveRecord::Schema.define(version: 20140601014016) do
     t.float    "longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "corridor_id"
   end
 
+  add_index "tj_stops", ["corridor_id"], name: "index_tj_stops_on_corridor_id"
   add_index "tj_stops", ["latitude"], name: "index_tj_stops_on_latitude"
   add_index "tj_stops", ["longitude"], name: "index_tj_stops_on_longitude"
 

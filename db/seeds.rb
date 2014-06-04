@@ -1,7 +1,19 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'csv'
+
+filename = "db/seeds/tj_stops.csv"
+
+
+[*1..11].each { |num| Corridor.create(number: num) }
+
+
+CSV.foreach(filename, headers: true) do |row|
+  stop = row.to_hash
+  TjStop.create(
+    name: stop["name"],
+    google_lookup: stop["name"],
+    latitude: stop["latitude"],
+    longitude: stop["longitude"],
+    corridor_id: Corridor.find_by_number(stop["corridor"]).id
+
+    )
+end

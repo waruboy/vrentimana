@@ -5,7 +5,7 @@ class StaticPagesController < ApplicationController
 
   def search
    @query = params[:q]
-    @query_string = "#{@query}"
+    @query_string = "#{@query}, Jakarta, Indonesia"
     result = Geocoder.search(@query_string, bounds: [[-6.0886599, 106.972825], [-6.3708331, 106.686211]])
     @success = !result.empty?
     if @success
