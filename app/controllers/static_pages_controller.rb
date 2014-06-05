@@ -13,6 +13,12 @@ class StaticPagesController < ApplicationController
       @lat = @location["geometry"]["location"]["lat"]
       @lng = @location["geometry"]["location"]["lng"]
 
+      query = Query.create(
+        text: @query,
+        latitude: @lat,
+        longitude: @lng
+        )
+
       coordinate = [@lat, @lng]
       @stops = TjStop.near(coordinate, 1, units: :km)
 
