@@ -1,9 +1,11 @@
 class StaticPagesController < ApplicationController
   def index
+    @radius = '1'
   end
 
   def search
-   @query = params[:q]
+    @query = params[:q]
+    @radius = params[:radius]
     @query_string = "#{@query}, Jakarta, Indonesia"
     result = Geocoder.search(@query_string, bounds: [[-6.0886599, 106.972825], [-6.3708331, 106.686211]])
     @success = !result.empty?
@@ -19,7 +21,8 @@ class StaticPagesController < ApplicationController
         )
 
       coordinate = [@lat, @lng]
-      @stops = TjStop.near(coordinate, 1, units: :km)
+      
+      @stops = TjStop.near(coordinate, @radius, units: :km)
 
       @hash = Gmaps4rails.build_markers(@stops) do |stop, marker|
         marker.lat stop.latitude
