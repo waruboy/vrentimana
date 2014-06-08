@@ -1,12 +1,11 @@
 <%= render 'search_box' %>
 
 <h2> Pencarian: <%= @query %></h2>
-
   <% if @success %>
     <div class="row">
       <div class="col-md-6">
         <p><%= @location["formatted_address"] %></p>
-        <p><%= "(#{@lat}, #{@lng})" %></p>
+        <p><%= "(#{@lat}, #{@lng}), #{@in_jakarta}" %></p>
         <div id="map" style='width: 600px; height: 400px;'></div>
         <br>
       </div>

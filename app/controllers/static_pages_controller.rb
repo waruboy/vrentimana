@@ -6,13 +6,23 @@ class StaticPagesController < ApplicationController
   def search
     @query = params[:q]
     @radius = params[:radius]
-    @query_string = "#{@query}, Jakarta, Indonesia"
-    result = Geocoder.search(@query_string, bounds: [[-6.0886599, 106.972825], [-6.3708331, 106.686211]])
-    @success = !result.empty?
+    @query_string = "#{@query}"
+    results = Geocoder.search(@query_string, bounds: [[-6.0886599, 106.972825], [-6.3708331, 106.686211]])
+    subtractor  = []
+    results.each do |result|
+      if !check_in_jakarta(result.data)
+        subtractor += [result]
+      end
+    end
+
+    @results = results - subtractor
+
+    @success = !@results.empty?
     if @success
-      @location = result.first.data
+      @location = results.first.data
       @lat = @location["geometry"]["location"]["lat"]
       @lng = @location["geometry"]["location"]["lng"]
+
 
       query = Query.create(
         text: @query,
@@ -44,3 +54,22 @@ class StaticPagesController < ApplicationController
 
   end
 end
+
+private
+
+  def check_in_jakarta(location)
+
+    latitude = location["geometry"]["location"]["lat"]
+    longitude = location["geometry"]["location"]["lng"]
+
+    latitude_ok = latitude < -6.0886599 && latitude > -6.3708331
+    longitude_ok = longitude < 106.972825 && longitude > 106.686211
+
+    if latitude_ok && longitude_ok
+      true
+    else
+      false
+    end
+  end
+
+
