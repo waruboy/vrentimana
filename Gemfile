@@ -58,6 +58,7 @@ end
 gem 'devise'
 gem 'rails_admin'
 gem 'gmaps4rails'
+gem 'newrelic_rpm'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
