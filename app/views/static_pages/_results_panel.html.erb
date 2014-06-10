@@ -1,0 +1,22 @@
+<div class="panel panel-info">
+  
+  <div class="panel-heading">
+    <h3 class="panel-title">Lokasi lain <span class="badge pull-right"><%= @other_results.count %></span> </h3>
+  </div>
+  <div class="panel-body">  
+    <% if @other_results.empty? %>
+      <div class="alert alert-warning">
+        <p>Tidak ada lokasi lain yang mirip</p>
+      </div>
+    <% end %>
+
+
+    <% @other_results.each_with_index do |result, index| %>
+
+      <%= link_to result.data["formatted_address"], 
+        "/search?utf8=✓&q=#{@query}&commit=Cari&radius=1&location_index=#{index+1}" %>
+      <br>
+
+    <% end %>
+  </div>
+</div>

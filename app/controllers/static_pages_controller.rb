@@ -19,9 +19,13 @@ class StaticPagesController < ApplicationController
 
     @success = !@results.empty?
     if @success
-      @location = results.first.data
+      index = params[:location_index] ? params[:location_index] : 0 
+      index = index.to_i
+      @location = results[index].data
       @lat = @location["geometry"]["location"]["lat"]
       @lng = @location["geometry"]["location"]["lng"]
+
+      @other_results = @results - [@results[index]]
 
 
       query = Query.create(
