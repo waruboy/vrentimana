@@ -21,11 +21,12 @@ class StaticPagesController < ApplicationController
     if @success
       index = params[:location_index] ? params[:location_index] : 0 
       index = index.to_i
-      @location = results[index].data
+      @location = @results[index].data
       @lat = @location["geometry"]["location"]["lat"]
       @lng = @location["geometry"]["location"]["lng"]
 
       @other_results = @results - [@results[index]]
+      @results_hash = Hash[@results.map.with_index.to_a]
 
 
       query = Query.create(

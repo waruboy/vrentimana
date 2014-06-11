@@ -14,7 +14,7 @@
     <% @other_results.each_with_index do |result, index| %>
 
       <%= link_to result.data["formatted_address"], 
-        "/search?utf8=✓&q=#{@query}&commit=Cari&radius=1&location_index=#{index+1}" %>
+        "/search?utf8=✓&q=#{@query}&commit=Cari&radius=1&location_index=#{@results_hash[result]}" %>
       <br>
 
     <% end %>
