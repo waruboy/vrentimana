@@ -39,6 +39,18 @@ class StaticPagesController < ApplicationController
       
       @stops = TjStop.near(coordinate, @radius, units: :km)
 
+      @stops.reload
+      if @stops.empty?
+        @radius = '3' 
+        @stops = TjStop.near(coordinate, @radius, units: :km)
+      end
+
+      @stops.reload
+      if @stops.empty?
+        @radius = '5' 
+        @stops = TjStop.near(coordinate, @radius, units: :km)
+      end
+
       @hash = Gmaps4rails.build_markers(@stops) do |stop, marker|
         marker.lat stop.latitude
         marker.lng stop.longitude
