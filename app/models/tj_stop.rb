@@ -14,7 +14,7 @@ class TjStop < ActiveRecord::Base
 
   def distance_string
     if distance >= 1
-      "#{distance} km"
+      "#{distance.round(1)} km"
     else
       "#{distance_in_m} m"
     end
