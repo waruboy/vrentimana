@@ -54,7 +54,7 @@ class StaticPagesController < ApplicationController
       @hash = Gmaps4rails.build_markers(@stops) do |stop, marker|
         marker.lat stop.latitude
         marker.lng stop.longitude
-        marker.infowindow "[TJ] K#{stop.corridor.number}. #{stop.name} (#{stop.distance.round(1)} km)"
+        marker.infowindow "[TJ] K#{stop.corridor.number}. #{stop.name} (#{stop.distance_string})"
       end
 
       location_hash = {
