@@ -43,9 +43,9 @@ class StaticPagesController < ApplicationController
       if @stops.empty?
         @radius = '3' 
         @stops = TjStop.near(coordinate, @radius, units: :km)
+        @stops.reload
       end
 
-      @stops.reload
       if @stops.empty?
         @radius = '5' 
         @stops = TjStop.near(coordinate, @radius, units: :km)
