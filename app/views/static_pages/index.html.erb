@@ -1,1 +1,97 @@
-<%= render "search_box" %>
+    <!-- Full Page Image Header Area -->
+    <div id="top" class="header">
+        <div class="vert-text">
+            <h1>Brentimana</h1>
+            <h3>
+                Cari lokasi halte TransJakarta terdekat dari mana saja
+            </h3>
+            <br>
+            <div class="col-md-6 col-md-offset-3">
+            <%= form_tag("/search", method: "get") do %>
+                <div class="input-group">
+
+                  <%= text_field_tag(:q, '', {class: "form-control", value: @query, placeholder: "Halte terdekat dari:"}) %>
+                  <span class="input-group-btn">
+                    <%= submit_tag("Cari", class: "btn btn-default") %>
+                  </span>
+                </div>
+                <label>
+                  Jarak pencarian: 
+                </label>
+                <label class="radio-inline">
+                  <%= radio_button_tag 'radius', '1', @radius == '1' %> 1 km
+                </label>
+                <label class="radio-inline">
+                  <%= radio_button_tag 'radius', '3', @radius == '3' %> 3 km
+                </label>
+                <label class="radio-inline">
+                  <%= radio_button_tag 'radius', '5', @radius == '5' %> 5 km
+                </label>
+            <% end %>
+            </div>
+            <br>
+            <br>
+            <br>
+        </div>
+    </div>
+    <!-- /Full Page Image Header Area -->
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 text-center">
+                    <ul class="list-inline">
+                        <li><i class="fa fa-facebook fa-3x"></i>
+                        </li>
+                        <li><i class="fa fa-twitter fa-3x"></i>
+                        </li>
+                        <li><i class="fa fa-dribbble fa-3x"></i>
+                        </li>
+                    </ul>
+                    <div class="top-scroll">
+                        <a href="#top"><i class="fa fa-circle-arrow-up scroll fa-4x"></i></a>
+                    </div>
+                    <hr>
+                    <p>Copyright &copy; TillDawnProgrammer.com 2014</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- /Footer -->
+
+    <!-- JavaScript -->
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/bootstrap.js"></script>
+
+    <!-- Custom JavaScript for the Side Menu and Smooth Scrolling -->
+    <script>
+    $("#menu-close").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+    </script>
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+    </script>
+    <script>
+    $(function() {
+        $('a[href*=#]:not([href=#])').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+    });
+    </script>
