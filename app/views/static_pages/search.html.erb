@@ -1,29 +1,32 @@
-<%= render 'search_box' %>
+<div class="container-fluid">
 
-<h2> Pencarian: <%= @query %></h2>
-  <% if @success %>
-    <div class="row">
-      <div class="col-md-6">
-        <p><%= @location["formatted_address"] %></p>
-        <p><%= "(#{@lat}, #{@lng}), #{@in_jakarta}" %></p>
-        <div id="map" style='width: 600px; height: 400px;'></div>
-        <br>
-      </div>
-      <div class="col-md-4">
-        <div class="row">
-          <%= render 'tj_stop_panel' %>
+  <%= render 'search_box' %>
+  
+    <h2> Pencarian: <%= @query %></h2>
+    <% if @success %>
+      <div class="row">
+        <div class="col-md-6">
+          <p><%= @location["formatted_address"] %></p>
+          <p><%= "(#{@lat}, #{@lng}), #{@in_jakarta}" %></p>
+          <div id="map" style='width: 600px; height: 400px;'></div>
+          <br>
         </div>
-        <div class="row">
-          <%= render 'results_panel' %>
+        <div class="col-md-4 col-md-offset-1">
+          <div class="row">
+            <%= render 'tj_stop_panel' %>
+          </div>
+          <div class="row">
+            <%= render 'results_panel' %>
+          </div>
         </div>
       </div>
-    </div>
-    <%= render 'map_script' %>
+      <%= render 'map_script' %>
 
-  <% else %>
-    <div class="alert alert-warning">
-      <p> Lokasi "<%= @query %>" tidak ditemukan di Jakarta</p>
-    </div>
-<% end %>
+    <% else %>
+      <div class="alert alert-warning">
+        <p> Lokasi "<%= @query %>" tidak ditemukan di Jakarta</p>
+      </div>
+  <% end %>
 
+  </div>
 </div>
