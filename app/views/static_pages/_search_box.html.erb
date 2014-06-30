@@ -6,7 +6,7 @@
       <%= form_tag("/search", method: "get") do %>
         <div class="input-group">
 
-          <%= text_field_tag(:q, '', {class: "form-control", value: @query, placeholder: "Halte terdekat dari:"}) %>
+          <%= text_field_tag(:q, '', {class: "form-control", value: @query, placeholder: "Halte terdekat dari:", required: true}) %>
           <span class="input-group-btn">
             <%= submit_tag("Cari", class: "btn btn-default") %>
           </span>
