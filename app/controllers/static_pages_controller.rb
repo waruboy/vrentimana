@@ -67,6 +67,7 @@ class StaticPagesController < ApplicationController
       }
 
       @hash << location_hash
+      gon.stops = @stops
     end
 
   end

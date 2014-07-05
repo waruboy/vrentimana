@@ -75,6 +75,9 @@ GEM
       railties (>= 3.2, < 5.0)
     geocoder (1.2.1)
     gmaps4rails (2.1.2)
+    gon (4.1.1)
+      actionpack (>= 2.3.0)
+      json
     haml (4.0.5)
       tilt
     hike (1.2.3)
@@ -233,6 +236,7 @@ DEPENDENCIES
   factory_girl_rails
   geocoder
   gmaps4rails
+  gon
   jbuilder (~> 2.0)
   jquery-rails
   minitest
