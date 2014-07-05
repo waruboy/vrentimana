@@ -6,7 +6,7 @@
   <div class="panel-body">  
     <% if @stops.empty? %>
       <div class="alert alert-warning">
-        <p>Tidak ada halte di sekitar lokasi</p>
+        <p>Tidak ada halte dalam jarak <%= @radius %> km di sekitar lokasi</p>
       </div>
     <% end %>
 
