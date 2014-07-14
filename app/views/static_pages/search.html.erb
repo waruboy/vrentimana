@@ -22,6 +22,7 @@
       </div>
       <%= render 'map_script' %>
 
+
     <% else %>
       <div class="alert alert-warning">
         <p> Lokasi "<%= @query %>" tidak ditemukan di Jakarta</p>
@@ -30,3 +31,10 @@
 
   </div>
 </div>
+
+<script>
+var input = /** @type {HTMLInputElement} */(
+    document.getElementById('q'));
+
+var autocomplete = new google.maps.places.Autocomplete(input);
+</script>
