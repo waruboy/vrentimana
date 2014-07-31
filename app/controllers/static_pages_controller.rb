@@ -6,8 +6,19 @@ class StaticPagesController < ApplicationController
   def search
     @query = params[:q]
     @radius = params[:radius]
-    @query_string = "#{@query}"
-    results = Geocoder.search(@query_string, bounds: [[-6.0886599, 106.972825], [-6.3708331, 106.686211]])
+    if params[:lat] !=""
+      place_data = {
+        "geometry"=>{"location"=>{"lat"=>params[:lat].to_f,"lng"=>params[:lng].to_f}},
+        "formatted_address"=>@query
+      }
+      place = Geocoder::Result::Google.new(place_data)
+
+      results=[place]
+    else
+      @query_string = "#{@query}"
+      results = Geocoder.search(@query_string, bounds: [[-6.0886599, 106.972825], [-6.3708331, 106.686211]])
+    end
+  
     subtractor  = []
     results.each do |result|
       if !check_in_jakarta(result.data)
