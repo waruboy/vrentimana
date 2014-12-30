@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.1'
+gem 'rails', '4.2'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -51,6 +51,7 @@ group :development do
   gem 'capistrano-rails'
   gem 'spring-commands-rspec'
   gem 'rspec-rails', '2.13.1'
+  gem 'web-console', '~> 2.0'
 
 
 end
