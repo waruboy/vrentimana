@@ -63,6 +63,7 @@ gem 'newrelic_rpm'
 gem 'gon'
 gem 'mina'
 gem 'pg'
+gem 'responders', '~> 2.0'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]

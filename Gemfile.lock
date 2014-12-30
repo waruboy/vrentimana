@@ -181,6 +181,8 @@ GEM
     rdoc (4.1.1)
       json (~> 1.4)
     remotipart (1.2.1)
+    responders (2.0.2)
+      railties (>= 4.2.0.alpha, < 5)
     rspec-core (2.13.1)
     rspec-expectations (2.13.0)
       diff-lcs (>= 1.1.3, < 2.0)
@@ -276,6 +278,7 @@ DEPENDENCIES
   pg
   rails (= 4.2)
   rails_admin
+  responders (~> 2.0)
   rspec-rails (= 2.13.1)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
