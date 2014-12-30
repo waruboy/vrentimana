@@ -61,6 +61,8 @@ gem 'rails_admin'
 gem 'gmaps4rails'
 gem 'newrelic_rpm'
 gem 'gon'
+gem 'mina'
+gem 'pg'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
