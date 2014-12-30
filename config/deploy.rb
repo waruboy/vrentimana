@@ -50,6 +50,9 @@ task :setup => :environment do
 
   queue! %[touch "#{deploy_to}/#{shared_path}/config/database.yml"]
   queue  %[echo "-----> Be sure to edit '#{deploy_to}/#{shared_path}/config/database.yml'."]
+
+  queue! %[touch "#{deploy_to}/#{shared_path}/config/secrets.yml"]
+  queue  %[echo "-----> Be sure to edit '#{deploy_to}/#{shared_path}/config/secrets.yml'."]
 end
 
 desc "Deploys the current version to the server."
